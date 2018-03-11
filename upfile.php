@@ -31,6 +31,6 @@ if (isset($_FILES['myFile']))
         echo "<p>Upload succeeded</p>";
         echo "<p>You will be redirected to home page in 3 seconds</p>";
         echo "<meta http-equiv=\"refresh\" content=\"3;url=http://localhost/CNWeb/WebAndOnlineService/Lab-4-Ex1.php\" />";
-    }
+	}
 }
 ?>
