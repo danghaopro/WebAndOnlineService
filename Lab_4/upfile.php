@@ -22,9 +22,9 @@
 					/* danghao: dòng dưới này chỗ [$i] nếu upload 1 file thì sẽ bị lỗi vì biến name không phải array nữa
 					   và $_FILES['mtFile'] chứ không phải $_FILES['upload']
 						 bến trên đã lấy ra $myFile = $_FILES['myFile'] rồi thì dưới này dùng luôn cái $myFile cũng được */
-          $filename = $_FILES['upload']['name'][$i];          //tên file khi upload lên thư mục (destination)
-          $file_tmp = $_FILES['upload']['tmp_name'][$i];      //tên file
-          move_uploaded_file($file_tmp, "upload/" . $filename);  //chuyển file vào thư mục "upload/" với tên là filename
+          $filename = $_FILES['upload']['name'][$i];          		//tên file khi upload lên thư mục (destination)
+          $file_tmp = $_FILES['upload']['tmp_name'][$i];      		//tên file
+          move_uploaded_file($file_tmp, "upload/" . $filename);  	//chuyển file vào thư mục "upload/" với tên là filename
         }
       }
     }
