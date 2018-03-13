@@ -29,7 +29,7 @@
 	//Tạo một đối tượng của lớp ObjectTracker 
 	//với tên là First object
 	//cùng với đó, id của o = 1 = $nextSerial + 1
-	$o2 = clone $o;
+	$o2 =  $o;
 	//sao chép đối tượng $o sang đối tượng $o2 với đầy đủ các thuộc tính của $o
 	//gọi đến hàm __clone(), biến id tăng thêm 1
 	$o2->setName("Second object");
@@ -44,5 +44,12 @@
 	1-First object
 	2:
 	2-Second object
+	*/
+	/*
+	khi sử dụng $o2 = $o thì output là:
+	1:
+	1-Second object
+	2:
+	1-Second object
 	*/
 ?>
