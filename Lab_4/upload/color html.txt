@@ -1,0 +1,5 @@
+<font color="#7B0EC9"> purple
+<font color="#c61212"> red
+<font color="#000000"> black
+<font face="Arial">
+ducminhdao.000webhostapp.com/
