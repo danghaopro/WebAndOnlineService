@@ -6,7 +6,7 @@
 </head>
 <body>
 	<form method=POST action="upfile.php">
-		Select the number of files: 
+		Select the number of files:
 		<select name="number">
 			<option value="1">1</option>
 			<option value="2">2</option>

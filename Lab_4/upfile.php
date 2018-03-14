@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['submit'])) 
+if (isset($_POST['submit']))
 {
 	$number = $_POST['number'];        // $number lưu trữ số file người dùng chọn để upload
     echo "You have chosen to upload ".$number." files";
@@ -19,7 +19,7 @@ if (isset($_FILES['myFile']))
     {
         echo "<p>You have uploaded more files than you submitted</p>";
         echo "<p>You will be redirected to home page in 3 seconds</p>";
-        echo "<meta http-equiv=\"refresh\" content=\"3;url=http://localhost/CNWeb/WebAndOnlineService/Lab-4-Ex1.php\" />";
+        echo "<meta http-equiv=\"refresh\" content=\"3;url=Lab-4-Ex1.php\" />";
     }
     else
     {
@@ -30,7 +30,7 @@ if (isset($_FILES['myFile']))
         }
         echo "<p>Upload succeeded</p>";
         echo "<p>You will be redirected to home page in 3 seconds</p>";
-        echo "<meta http-equiv=\"refresh\" content=\"3;url=http://localhost/CNWeb/WebAndOnlineService/Lab-4-Ex1.php\" />";
+        echo "<meta http-equiv=\"refresh\" content=\"3;url=Lab-4-Ex1.php\" />";
 	}
 }
 ?>
