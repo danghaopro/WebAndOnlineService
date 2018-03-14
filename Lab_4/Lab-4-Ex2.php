@@ -34,6 +34,9 @@
 	<br>
 	<?php
 		$directory = 'upload/';
+		if (!file_exists($directory)) {
+    	mkdir($directory);
+		}
 		$filelist = scandir($directory);
 		if (!isset($_POST['submit'])) {
 			$list0 = array_diff(scandir($directory), array('..', '.'));

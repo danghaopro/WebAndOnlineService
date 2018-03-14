@@ -30,6 +30,9 @@
 		$file_size = array();
 		$file_time = array();
 		$directory = 'upload/';
+		if (!file_exists($directory)) {
+    	mkdir($directory, 0755, true);
+		}
 		$filelist = scandir($directory);
 
 		$list0 = array_diff(scandir($directory), array('..', '.'));
