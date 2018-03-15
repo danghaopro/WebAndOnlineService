@@ -1,11 +1,11 @@
-<?php  
+<?php
 
-	//trả về mảng các method có thể gọi (bao gồm cả phương thức thừa kế)
+	//trả về mảng các method mà lớp của đối tượng này định nghĩa mới
 	function getMethod($object) {
 		$methods = get_class_methods(get_class($object));
 		/*
-			hàm get_class($object) trả về tên lớp của đối tường được truyền vào
-			hàm get_class_methods($class_name) trả về tên của các phương thức được xác định bởi tên lớp $class_name
+			hàm get_class($object) trả về tên lớp của đối tượng được truyền vào
+			hàm get_class_methods($class_name) trả về tên của các phương thức của lớp
 		*/
 
 		if(get_parent_class($object)) {
@@ -18,7 +18,8 @@
 		}
 		return $methods;
 	}
-	//trả về một mảng các phương thức được kế thừa
+
+	//trả về một mảng các phương thức được kế thừa lại từ lớp cha
 	function getInheritedMethod($object) {
 		$methods = get_class_methods(get_class($object));
 
@@ -29,18 +30,20 @@
 		}
 		return $methods;
 	}
+
 	//trả về một mảng của các lớp cha
 	function getLineage($object) {
 		if(get_parent_class($object)) {//nếu get_parent_class($object) != NULL
 			$parent = get_parent_class($object);
-			$parent_object = new $parent;
-			$lineage = getLineage($parent_object);
+			$parent_object = new $parent;// Tạo một đối tượng của lớp cha
+			$lineage = getLineage($parent_object);// đệ quy để lấy ra các lớp cha của lớp cha này
 			$lineage[] = get_class($object);
 		} else {//ngược lại
 			$lineage = array(get_class($object));
 		}
 		return $lineage;
 	}
+
 	//trả về mảng các lớp con
 	function getChildClasses($object) {
 		$classes = get_declared_classes();
@@ -65,19 +68,24 @@
 		$class = get_class($object);//lay ten lop cua $object
 		echo "<h2>Class</h2>";
 		echo "<p>$class</p>";
+
+		// Tính kế thừa
 		echo "<h2>Inheritance</h2>";
+
 		echo "<h3>Parents</h3>";
-		$lineage = getLineage($object);
+		$lineage = getLineage($object);// tên các lớp cha, ông,...
 		array_pop($lineage);
-		//array_pop($) trả về giá trị cuối của mảng hoặc NULL nếu mảng rỗng
+		//array_pop($) loại bỏ giá trị cuối của mảng
 		echo count($lineage) ? ('<p>' . join(' -&gt', $lineage) . '</p>') : '<i>None</i>';
 		//nếu $lineage rỗng thì in ra None, ngược lại in ra chuỗi các phần tử của $lineage ngăn cách bởi -&gt
 		echo "<h3>Childrens</h3>";
 		$childrens = getChildClasses($object);
 		echo "<p>" . (count($childrens) ? join(' , ', $childrens) : "<i>None</i>") . "</p>";
+
+		// Hàm
 		echo "<h2>Methods</h2>";
-		$methods = get_class_methods($class);
-		$object_methods = getMethod($object);
+		$methods = get_class_methods($class);// Các hàm của lớp (cả các hàm kế thừa)
+		$object_methods = getMethod($object);// Các hàm của đối tượng mà lớp của đối tượng khai báo mới
 		if(!count($methods)) {
 			echo "<i>None</i>";
 		}
@@ -88,11 +96,13 @@
 				//in_array($a, $b) trả về true nếu $a có trong $b, ngược lại trả về false
 			}
 		}
+
+		// Biến
 		echo "<h2>Properties</h2>";
 		$properties = get_class_vars($class);
-		//hàm get_class_vars($class_name) 
-		//Trả về mảng kết hợp các thuộc tính được khai báo có thể nhìn thấy từ phạm vi hiện tại, với giá 
-		//trị mặc định của chúng. Các phần tử mảng kết quả dưới dạng varname => value. Trong trường 
+		//hàm get_class_vars($class_name)
+		//Trả về mảng kết hợp các thuộc tính được khai báo có thể nhìn thấy từ phạm vi hiện tại, với giá
+		//trị mặc định của chúng. Các phần tử mảng kết quả dưới dạng varname => value. Trong trường
 		//hợp có lỗi, nó trả về FALSE.
 		if(!count($properties)) {
 			echo "<i>None</i>";
