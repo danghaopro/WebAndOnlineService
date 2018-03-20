@@ -108,9 +108,9 @@
 			echo "<i>None</i>";
 		}
 		else {
-			foreach (array_keys($properties) as $e) {
+			foreach ($properties as $name => $value) {
 			//ham array_keys($properties) tra ve mang cac keys cua $properties
-				echo "<b>$e</b> = " . $object->$e . "<br>";
+				echo "<b>$name</b> = " . $value . "<br>";
 			}
 		}
 		echo "<br>";

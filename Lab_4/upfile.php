@@ -12,8 +12,8 @@
         $number = $_POST['number'];
         $myFile = $_FILES['myFile'];
         $fileCount = count($myFile["name"]);
-        if ($fileCount > $number) {
-            echo "<p>You have uploaded more files than you submitted</p>";
+        if ($fileCount != $number) {
+            echo "<p>You have to uploaded exactly files was you submitted</p>";
             echo "<p>You will be redirected to home page in 3 seconds</p>";
             echo "<meta http-equiv=\"refresh\" content=\"3;url=Lab-4-Ex1.php\" />";
         } else {

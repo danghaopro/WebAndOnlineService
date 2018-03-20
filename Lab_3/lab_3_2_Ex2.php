@@ -33,8 +33,8 @@
       <table>
         <tr>
           <td></td>
-          <th>Persion 1</th>
-          <th>Persion 2</th>
+          <th>Person 1</th>
+          <th>Person 2</th>
         </tr>
         <tr>
           <td>Name:</td>
@@ -100,12 +100,15 @@
           exit();
         }
         $year = date("Y");
-        $date1 = date_format(date_create("{$year1}-{$month1}-{$day1}"), "l, F d, Y");
-        $date2 = date_format(date_create("{$year2}-{$month2}-{$day2}"), "l, F d, Y");
+        $d1 = date_create("{$year1}-{$month1}-{$day1}");
+        $d2 = date_create("{$year2}-{$month2}-{$day2}");
+        $date1 = date_format($d1, "l, F d, Y");
+        $date2 = date_format($d2, "l, F d, Y");
         $age1 = $year - $year1;
         $age2 = $year - $year2;
         echo "The birthday of {$name1} is {$date1}, {$age1} years old<br>";
         echo "The birthday of {$name2} is {$date2}, {$age2} years old<br>";
+        echo "The difference in days of two date is: " . abs(date_diff($d1, $d2)->format("%R%a")) . " days<br>";
         if ($age1 > $age2) {
           echo "{$name1} more than {$name2} " . ($age1 - $age2) . " years old!";
         } else if ($age2 > $age1) {
