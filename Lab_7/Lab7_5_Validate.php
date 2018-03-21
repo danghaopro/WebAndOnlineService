@@ -28,19 +28,34 @@
 
                 public function IsValidEmail($email)
                 {
-                    return filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/@.+\./', $email);
+                    /*
+                    - ([a-zA-Z0-9_\.]{6,32}): Có từ 6-32 ký tự, các ký tự có thể là chữ cái thường, chữ cái hoa, chữ số, dấu chấm và dấu gạch dưới
+                    - ([a-zA-Z0-9]{2,12}): Có từ 2-12 ký tự, các ký tự có thể là chữ cái thường, chữ cái hoa và chữ số
+                    - (\.[a-zA-Z]{2,12})+: Có ít nhất một tên miền cấp cha, bắt đầu bằng dấu chấm, sau đó là 2-12 ký tự chữ cái, ví dụ .com, .com.vn, .hust.edu.vn
+                    */
+                    $pattern = '/^';
+                    $pattern .= '([A-Za-z0-9_\.]{6,32})'; // before @
+                    $pattern .= '@'; // @
+                    $pattern .= '([a-zA-Z0-9]{2,12})'; // domain
+                    $pattern .= '(\.[a-zA-Z]{2,12})+'; // parent domain
+                    $pattern .= '$/';
+                    return preg_match($pattern, $email);
                 }
                 public function IsValidURL($url)
                 {
-                    return filter_var($url, FILTER_VALIDATE_URL) && preg_match('/\/{2,}\.+?*/', $url);
+                    $pattern = '/^';
+                    $pattern .= '[a-zA-Z]+:\/\/';// Protocol: Phải có ít nhất 1 chữ cái và sau đó là "://"
+                    $pattern .= '([a-zA-Z0-9]{2,12})';// Domain: Có từ 2-12 ký tự chữ cái hoặc chữ số
+                    $pattern .= '(\.[a-zA-Z]{2,12})+'; // Parent domain: Phải có ít nhất 1 tên miền cấp cha bắt đầu bằng dấu chấm, sau đó là 2-12 ký tự chữ cái, ví dụ .com, .com.vn, .hust.edu.vn
+                    $pattern .= '$/';
+                    return preg_match($pattern, $url);
                 }
                 public function IsValidPhoneNumber($phone)
                 {
-                    $pattern = '/[0-9]{6,14}/';
+                    $pattern = '/[0-9]{6,14}/';// Có từ 6-14 chữ số
                     return preg_match($pattern, $phone);
                 }
             }
-
 
             $email = "";
             $url = "";
