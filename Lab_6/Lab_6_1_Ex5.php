@@ -28,7 +28,7 @@
         $pass = '123456';
         $dbname = 'business_service';
 
-        $con = mysqli_connect($host, $user, $pass, $dbname);
+        $con = new mysqli($host, $user, $pass, $dbname);
 
         // if submit then insert to database
         if (isset($_POST['submit'])) {
@@ -36,13 +36,13 @@
             $title = $_POST['title'];
             $des = $_POST['des'];
 
-            if (!$con) {
+            if ($con->connect_error) {
                 print("<h3>Error while connect to mysql!<br>Can't add the new category</h3>");
             } else {
                 $strquery = "INSERT INTO categories (categoryid, title, description) ";
                 $strquery .= "VALUES ('{$catid}', '{$title}', '{$des}')";
-                if (!mysqli_query($con, $strquery)) {
-                    print("<h3>ERROR while insert row<br>" . mysqli_error($con) . "</h3>");
+                if ($con->query($strquery) === false) {
+                    print("<h3>ERROR while insert row<br>{$con->error}</h3>");
                 }
             }
         }
@@ -58,9 +58,10 @@
                 <?php
                 if ($con) {
                     $strquery = "SELECT * FROM categories";
-                    $resultset = mysqli_query($con, $strquery);
-                    if ($resultset && mysqli_num_rows($resultset) > 0) {
-                        while ($row = mysqli_fetch_assoc($resultset)) {
+                    $resultset = $con->query($strquery);
+
+                    if ($resultset->num_rows > 0) {
+                        while ($row = $resultset->fetch_assoc()) {
                             print("<tr>");
                             print("<td>{$row['categoryid']}</td>");
                             print("<td>{$row['title']}</td>");
@@ -68,6 +69,8 @@
                             print("</tr>");
                         }
                     }
+
+                    $con->close();
                 }
                 ?>
                 <!-- End MySQL Query -->
