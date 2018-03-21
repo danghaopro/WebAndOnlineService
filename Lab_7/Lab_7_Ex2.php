@@ -90,8 +90,7 @@
 
         ?>
 		<p>
-			<a href="Lab7_Ex4.php" title="Quay lại trang trước."><button type="button">Return</button></a>
+			<a href="Lab_7_Ex2.html" title="Quay lại trang trước."><button type="button">Return</button></a>
 		</p>
-		Press Return button to return Lab7_Ex4.php page
 	</body>
 </html>
