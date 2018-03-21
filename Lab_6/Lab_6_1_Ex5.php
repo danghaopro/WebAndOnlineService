@@ -60,7 +60,9 @@
                     $strquery = "SELECT * FROM categories";
                     $resultset = $con->query($strquery);
 
-                    if ($resultset->num_rows > 0) {
+                    if ($resultset === false) {
+                        echo "<h3>ERROR: {$con->error}</h3>";
+                    } elseif ($resultset->num_rows > 0) {
                         while ($row = $resultset->fetch_assoc()) {
                             print("<tr>");
                             print("<td>{$row['categoryid']}</td>");
