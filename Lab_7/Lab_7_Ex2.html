@@ -26,6 +26,26 @@
 			<input class="submit" type="submit" name="submit" value="Validate">
 		</form>
 	</p>
+	<button type="button" name="button" id="btnButton">Event</button>
+	<script type="text/javascript">
+		var button = document.getElementById('btnButton');
+		button.addEventListener('click', showEvent, true);
+
+		function showEvent(event) {
+			console.log(event.type);
+			console.log(event.target.nodeName);
+		}
+
+		console.log(window.navigator.appName);
+		console.log(window.navigator.appVersion);
+		console.log(window.navigator.appCodeName);
+		console.log(window.navigator.userAgent);
+		console.log(window.navigator.cookieEnabled);
+		console.log(window.navigator.platform);
+		console.log(window.navigator.appMinorVersion);
+		console.log(window.navigator.cpuClass);
+		console.log(window.navigator.systemLanguage);
+	</script>
 </body>
 
 </html>
