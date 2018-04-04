@@ -106,7 +106,18 @@ div.signup_birthday select {
 	font-weight: bold;
 	color: white;
 }
-
+.left_sidebar .menu li {
+	position: relative;
+}
+.left_sidebar .sub_menu li{
+ 	position: relative;
+ 	top: 10;
+ 	left: 40px;
+ 	display: none;
+}
+.left_sidebar .menu li:hover .sub_menu li{
+	display: block;
+}
 .main_body {
 	float: left;
 	width: 600px;
