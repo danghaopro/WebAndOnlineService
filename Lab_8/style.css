@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: sans-serif;
+  color: #333;
+}
+
+.loginlogo .signuplogo {
+	margin: 100px 250px;
+}
+.login_form  {
+	background-color: #50D8F1;
+	padding: 30px;
+	margin: 10px 250px;
+	border: 1px solid #9FB8BC;
+}
+.login_form input {
+	margin: 15px 15px 15px 150px;
+	padding: 5px;
+}
+.login_form a {
+	text-decoration: none;
+	font-size: 13px;
+}
+.login_form .login_title {
+	font-size: 28px;
+	color: black;
+	margin-left: 150px
+}
+.login_form a.create_account {
+	margin-left: 150px;
+}
+div.signup_birthday {
+	margin: 15px 15px 15px 150px;
+}
+div.signup_birthday select {
+	padding: 5px;
+	margin: 10px;
+}
+.header {
+	position: absolute;
+	height: 10%;
+	width: 100%;
+	background-color: #EDE8E8;
+}
+.header .logo {
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+.header .top_nav {
+	float: right;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+
+.header::after {
+	content: ".";
+	display: inline-block;
+	width: 100%;
+	height: 0px;
+	clear: both;
+}
+.image_logo {
+	width: 400px;
+	height: 70px;
+}
+.login_logo .image_logo {
+	margin: 10px 400px;
+}
+
+.body {
+	height: 90%;
+	position: absolute;
+	top: 10%;
+	left: 0px;
+	margin: 10px 120px;
+	overflow: hidden;
+}
+.body .left_sidebar {
+	float: left;
+	height: 100%;
+	overflow-y: auto;
+	background-color: #D7D9D7;
+}
+.body .left_sidebar ul {
+	list-style-type: none;
+	padding:0px;
+	margin: 0px;
+	width: 200px;
+	height: 100%;
+}
+.body .left_sidebar ul li a{
+	padding: 5px 10px;
+	margin: 0px;
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+
+.body .left_sidebar ul a:hover {
+	background-color: #24C337;
+	font-weight: bold;
+	color: white;
+}
+.left_sidebar .menu li {
+	position: relative;
+}
+.left_sidebar .sub_menu li{
+ 	position: relative;
+ 	top: 10;
+ 	left: 40px;
+ 	display: none;
+}
+.left_sidebar .menu li:hover .sub_menu li{
+	display: block;
+}
+.main_body {
+	float: left;
+	width: 600px;
+	margin-left: 10px 10px 0px 10px;
+	border: 1px solid black;
+	padding: 10px 10px 0px 10px;
+	height: 100%;
+	overflow-y: auto;
+}
+.footer {
+	height: 100px;
+	background-color: #C235D3;
+	position: relative;
+	bottom: 10px;
+	left: 10px;
+	padding: 10px 50px;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+.tieu_de_cau_hoi {
+	font-size: 24px;
+	text-align: center;
+}
+.main_content {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+}
+.main_content .cau_hoi {
+	border: 1px solid black;
+	width: 300px;
+	margin: 20px 100px;
+	padding: 20px;
+}
+.main_content .lua_chon {
+	width: 300px;
+	margin: 20px 100px;
+}
+.main_content .lua_chon  input {
+	margin: 10px;
+}
+.main_content .lua_chon  input.ok {
+	padding: 4px;
+	font-weight: bold;
+	margin-left: 150px;
+}
+.right_sidebar {
+	float: right;
+	height: 100%;
+	border: 1px solid black;
+	background-color: #D7D9D7;
+}
+.friend_list {
+	list-style-type: none;
+	height: 100%;
+	width: 200px;
+	overflow-y: auto;
+}
+.friend_list li {
+	display: block;
+	padding: 5px;
+	margin: 5px;
+}

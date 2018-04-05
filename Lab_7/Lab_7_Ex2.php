@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Validate result</title>
+		<title>Validate rerult</title>
 		<meta charset="utf-8">
 		<style type="text/css" media="screen">
 			a {
@@ -29,12 +29,14 @@
                 public function IsValidEmail($email)
                 {
                     /*
-                    - ([a-zA-Z0-9_\.]{6,32}): Có từ 6-32 ký tự, các ký tự có thể là chữ cái thường, chữ cái hoa, chữ số, dấu chấm và dấu gạch dưới
+                    - '([a-zA-Z0-9]{1})': Phải bắt đầu bằng chữ cái hoặc chữ số
+                    - ([a-zA-Z0-9_\.]{5,29}): Có từ 5-29 ký tự, các ký tự có thể là chữ cái thường, chữ cái hoa, chữ số, dấu chấm và dấu gạch dưới
                     - ([a-zA-Z0-9]{2,12}): Có từ 2-12 ký tự, các ký tự có thể là chữ cái thường, chữ cái hoa và chữ số
                     - (\.[a-zA-Z]{2,12})+: Có ít nhất một tên miền cấp cha, bắt đầu bằng dấu chấm, sau đó là 2-12 ký tự chữ cái, ví dụ .com, .com.vn, .hust.edu.vn
                     */
                     $pattern = '/^';
-                    $pattern .= '([A-Za-z0-9_\.]{6,32})'; // before @
+                    $pattern .= '([a-zA-Z0-9]{1})';
+                    $pattern .= '([A-Za-z0-9_\.]{5,29})'; // before @
                     $pattern .= '@'; // @
                     $pattern .= '([a-zA-Z0-9]{2,12})'; // domain
                     $pattern .= '(\.[a-zA-Z]{2,12})+'; // parent domain
@@ -90,8 +92,10 @@
 
         ?>
 		<p>
-			<a href="Lab7_Ex4.php" title="Quay lại trang trước."><button type="button">Return</button></a>
+			<a href="Lab_7_Ex2.html" title="Quay lại trang trước."><button type="button">Return</button></a>
 		</p>
-		Press Return button to return Lab7_Ex4.php page
+		<script type="text/javascript">
+			window.status="Nhom 28 lab 7"
+		</script>
 	</body>
 </html>
