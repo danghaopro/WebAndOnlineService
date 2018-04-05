@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Validate rerult</title>
+		<title>Validate result</title>
 		<meta charset="utf-8">
 		<style type="text/css" media="screen">
 			a {
