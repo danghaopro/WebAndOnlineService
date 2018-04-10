@@ -1,5 +1,5 @@
 function MyFunc() {
-	this.split = function(string) {
+	this.split = (string) =>{//tach chuoi ban dau thanh mang cac word
 		var s = [];
 		var len = 0;
 		var str = this.trim(string);
@@ -19,7 +19,7 @@ function MyFunc() {
 		}
 	return s;
 	}
-	this.trim = function(string) {
+	this.trim = (string) =>{//cat khoang trang o dau va cuoi chuoi
 		var start = 0;
 		var end = string.length;
 		var result = "";
@@ -31,7 +31,7 @@ function MyFunc() {
 			result += string.charAt(i);
 		return result;
 	}
-	this.reverse = function(string) {
+	this.reverse = (string) =>{//tra ve mang cac word trong chuoi nhap vao theo thu tu dao nguoc
 		var arr = this.split(string);
 		var s = [];
 		var len = 0;
@@ -41,12 +41,43 @@ function MyFunc() {
 		}
 		return s;
 	}
+	this.contains = function(string1, string2){//kiem tra xem chuoi mot co chua chuoi hai hay khong?
+		var len1 = string1.length;
+		var len2 = string2.length;
+		if(len2 > len1) 
+			return 0;
+		for(var i = 0; i < len1; i++) {//do length nho nen O(n^2) cung nho
+			var count = 0;
+			for(var j = 0; j < len2; j++) {
+				if(string1.charAt(i) === string2.charAt(j))
+					count++;
+				else {
+					count = 0; 
+					break;
+				}
+			}
+			if(count === len2)
+				return 1;
+		}
+		return 0;
+	};
+	this.filter = (string, filter) =>{//loc cac tu co chua filter khoi string da duoc dao nguoc tu chuoi ban dau
+		var s = this.reverse(string);
+		var result = [];
+		var len = 0;
+		for(var i = 0; i < s.length; i++) {
+			if(this.contains(s[i], filter) === 0)
+				result[len++] = s[i];
+		}
+		return result;
+	}
 }
 
 function lab9_ex3a() {
 	var myFunc = new MyFunc();
 	var phrase = document.getElementById('phrase').value;
 	var result = document.getElementById('result');
+	result.innerHTML = "";
 	var s = myFunc.reverse(phrase);
 	for(index = 0; index < s.length; index++) {
 		if(index % 2 === 0) {
@@ -54,5 +85,24 @@ function lab9_ex3a() {
 		}
 		else result.innerHTML += "<div class='word_even'>" + s[index] + "</div>";
 	}
-	document.getElementById('phrase').value = "";
 }
+function lab9_ex3b() {
+	var myFunc = new MyFunc();
+	var phrase = document.getElementById('phrase').value;
+	var filter = document.getElementById('filter').value;
+	var result = document.getElementById('result');
+	var count  = document.getElementById('count');
+	result.innerHTML = "";
+	count.innerHTML = "";
+	var s = myFunc.reverse(phrase);
+	var sFilter = myFunc.filter(phrase, filter);
+	count.innerHTML = "" + (s.length - sFilter.length) + " words filtered out!";
+	for(index = 0; index < sFilter.length; index++) {
+		if(index % 2 === 0) {
+			result.innerHTML += "<div class='word_odd'><u>" + sFilter[index] + "</u></div>";
+		}
+		else result.innerHTML += "<div class='word_even'>" + sFilter[index] + "</div>";
+	}
+}
+var t = new MyFunc();
+console.log(t.contains('duy', 'u'));
