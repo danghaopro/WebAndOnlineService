@@ -1,3 +1,4 @@
+# Hướng dẫn sử dụng
 - Sử dụng XAMPP Tomcat
 - Copy thư mục group28 vào thư mục C:/xampp/tomcat/webapps
 - Khởi động lại Tomcat của XAMPP
@@ -6,7 +7,7 @@
 - Các trang jsp nằm trong thư mục gốc
 - Để biên dịch các file mã nguồn java thành các file nhị phân class thì chạy file compiler.bat nằm trong thư mục gốc (Yêu cầu phải chạy được javac)
 
-Mô hình MVC:
+# Mô hình MVC:
 - Model: class group28.CanBo
 - View: home.jsp, search.jsp
 - Controller: group28.Index, group28.Home, group28.Search
