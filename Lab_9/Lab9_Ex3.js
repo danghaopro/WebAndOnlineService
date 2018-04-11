@@ -1,4 +1,6 @@
 function MyFunc() {
+	this.dilim = " ?!.,()-+@#$%^&*";
+
 	this.split = (string) =>{//tach chuoi ban dau thanh mang cac word
 		var s = [];
 		var len = 0;
@@ -7,13 +9,13 @@ function MyFunc() {
 		var end = start;
 		while(end < str.length) {
 			s[len] = "";
-			while(end < str.length && str.charAt(end) != ' ')
+			while(end < str.length && this.contains(this.dilim, str.charAt(end)) === 0)
 				end++;
 			for(var j = start; j < end; j++) {
 				s[len] += "" + str.charAt(j);
 			}
 			len++;
-			while(end < str.length && str.charAt(end) === ' ')
+			while(end < str.length && this.contains(this.dilim, str.charAt(end)) === 1)
 				end++;
 			start = end;
 		}
@@ -42,6 +44,7 @@ function MyFunc() {
 		return s;
 	}
 	this.contains = function(string1, string2){//kiem tra xem chuoi mot co chua chuoi hai hay khong?
+		//co chua tra ve 1, khong chua tra ve 0
 		var len1 = string1.length;
 		var len2 = string2.length;
 		if(len2 > len1) 
@@ -61,12 +64,39 @@ function MyFunc() {
 		}
 		return 0;
 	};
+	this.containsIgnoreCase = function(string1, string2) {
+		//co chua tra ve 1, khong chua tra ve 0
+		var len1 = string1.length;
+		var len2 = string2.length;
+		if(len2 > len1) 
+			return 0;
+		for(var i = 0; i < len1; i++) {//do length nho nen O(n^2) cung nho
+			var count = 0;
+			for(var j = 0; j < len2; j++) {
+				var c1 = string1.charCodeAt(i + j);
+				var c2 = string2.charCodeAt(j);
+				if(c1 === c2 || c1 - 65 === c2 - 97 || c1 - 97 === c2 - 65) {
+					count++;
+				}
+				else {
+					count = 0; 
+					break;
+				}
+			}
+			if(count === len2)
+				return 1;
+		}
+		return 0;
+	}
 	this.filter = (string, filter) =>{//loc cac tu co chua filter khoi string da duoc dao nguoc tu chuoi ban dau
+		if(this.containsIgnoreCase(string, filter) === 0 || filter === "") {//kiem tra xem cau nguoi dung nhap vao co chua filter hay khong
+			return null;
+		}
 		var s = this.reverse(string);
 		var result = [];
 		var len = 0;
 		for(var i = 0; i < s.length; i++) {
-			if(this.contains(s[i], filter) === 0)
+			if(this.containsIgnoreCase(s[i], filter) === 0)
 				result[len++] = s[i];
 		}
 		return result;
@@ -94,15 +124,18 @@ function lab9_ex3b() {
 	var count  = document.getElementById('count');
 	result.innerHTML = "";
 	count.innerHTML = "";
-	var s = myFunc.reverse(phrase);
 	var sFilter = myFunc.filter(phrase, filter);
-	count.innerHTML = "" + (s.length - sFilter.length) + " words filtered out!";
-	for(index = 0; index < sFilter.length; index++) {
-		if(index % 2 === 0) {
-			result.innerHTML += "<div class='word_odd'><u>" + sFilter[index] + "</u></div>";
+	if(sFilter == null) {
+		result.innerHTML = phrase;
+		count.innerHTML = "0 words filtered out!";
+	} else {
+		var s = myFunc.reverse(phrase);
+		count.innerHTML = "" + (s.length - sFilter.length) + " words filtered out!";
+		for(index = 0; index < sFilter.length; index++) {
+			if(index % 2 === 0) {
+				result.innerHTML += "<div class='word_odd'><u>" + sFilter[index] + "</u></div>";
+			}
+			else result.innerHTML += "<div class='word_even'>" + sFilter[index] + "</div>";
 		}
-		else result.innerHTML += "<div class='word_even'>" + sFilter[index] + "</div>";
 	}
 }
-var t = new MyFunc();
-console.log(t.contains('duy', 'u'));
