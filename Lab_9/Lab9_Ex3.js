@@ -106,7 +106,7 @@ function MyFunc() {
 function lab9_ex3a() {
 	var myFunc = new MyFunc();
 	var phrase = document.getElementById('phrase').value;
-	var result = document.getElementById('result');
+	var result = document.getElementById('words');
 	result.innerHTML = "";
 	var s = myFunc.reverse(phrase);
 	for(index = 0; index < s.length; index++) {
@@ -120,7 +120,7 @@ function lab9_ex3b() {
 	var myFunc = new MyFunc();
 	var phrase = document.getElementById('phrase').value;
 	var filter = document.getElementById('filter').value;
-	var result = document.getElementById('result');
+	var result = document.getElementById('words');
 	var count  = document.getElementById('count');
 	result.innerHTML = "";
 	count.innerHTML = "";
@@ -139,3 +139,5 @@ function lab9_ex3b() {
 		}
 	}
 }
+var a = "Àjhjhkjkjsakdjakdjks";
+console.log(a.charCodeAt(0));
