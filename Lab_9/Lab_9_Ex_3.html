@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>RegEx</title>
+</head>
+<body>
+	<h1>Sentence Reverser!</h1>
+	<div>Phrase <input type="text" id="phrase"></div>
+	<div>Filter <input type="text" id="filter"></div>
+	<button id="go">Go!</button>
+	<div id="words"></div>
+	<div id="count"></div>
+
+	<script type="text/javascript">
+		var callbackOnclick = function() {
+			var phrase = document.getElementById('phrase').value;	//phrase input
+			var filter = document.getElementById('filter').value;	//filter input
+
+			filter = filter.toLowerCase();							//make filter lower case
+			var temp_phrase = phrase.toLowerCase();					//make a temp phrase to store the lower case phrase
+			var pattern = new RegExp(filter);						//make a pattern with filter for RegEx
+
+			var words = document.getElementById('words');
+			var count = 0;											//count the number of filtered words
+
+			if(filter!=null && pattern.test(temp_phrase))
+			{
+				var temp = new Array();						//temp array to store the words which aren't match the pattern
+				var arr = phrase.split(" ");
+				for (var i = arr.length-1; i >=0 ; i--)
+				{
+					if(!pattern.test(arr[i]))
+					{
+						temp.push(arr[i]);
+					}
+					else
+					{
+						count++;
+					}
+				}
+				for (var i = 0; i < temp.length; i++) {
+					if(i%2==0)					//underline the words
+					{
+						var u = document.createElement('u');
+						var node = document.createTextNode(temp[i]);
+						var space = document.createTextNode(" ");
+						u.appendChild(node);
+						words.appendChild(u);
+						words.appendChild(space);
+					}
+					else
+					{
+						var node = document.createTextNode(temp[i]+" ");
+						words.appendChild(node);
+					}
+				}
+				document.getElementById('count').appendChild(document.createTextNode(count+" word(s) filtered out."));
+				//show the number of filtered words
+			}
+			else
+			{
+				document.getElementById('words').innerHTML=phrase;
+			}
+		}
+
+		var btn = document.getElementById("go");
+		btn.onclick = callbackOnclick;
+	</script>
+</body>
+</html>
