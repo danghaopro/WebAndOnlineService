@@ -4,15 +4,18 @@
 	<title>RegEx</title>
 </head>
 <body>
-	<script type="text/javascript">
-		
-		// var btn = document.getElementById("go");
-		// btn.onclick=filterPhrase();
+	<h1>Sentence Reverser!</h1>
+	<div>Phrase <input type="text" id="phrase"></div>
+	<div>Filter <input type="text" id="filter"></div>
+	<button id="go">Go!</button>
+	<div id="words"></div>
+	<div id="count"></div>
 
-		function filterPhrase() {
+	<script type="text/javascript">
+		var callbackOnclick = function() {
 			var phrase = document.getElementById('phrase').value;	//phrase input
 			var filter = document.getElementById('filter').value;	//filter input
-			
+
 			filter = filter.toLowerCase();							//make filter lower case
 			var temp_phrase = phrase.toLowerCase();					//make a temp phrase to store the lower case phrase
 			var pattern = new RegExp(filter);						//make a pattern with filter for RegEx
@@ -60,13 +63,8 @@
 			}
 		}
 
+		var btn = document.getElementById("go");
+		btn.onclick = callbackOnclick;
 	</script>
-	<h1>Sentence Reverser!</h1>
-	<div>Phrase <input type="text" id="phrase"></div>
-	<div>Filter <input type="text" id="filter"></div>
-	<button id="go" onclick="filterPhrase()">Go!</button>
-	<div id="words"></div>
-	<div id="count"></div>
-
 </body>
 </html>
