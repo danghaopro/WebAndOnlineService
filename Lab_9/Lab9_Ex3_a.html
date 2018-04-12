@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Lab 9 Exercise 3a
+    </title>
+    <style type="text/css" media="screen">
+        .form {
+            border: 2px solid black;
+            padding: 50px;
+            margin: 10px 300px;
+            ;
+        }
+
+        input {
+            padding: 5px;
+        }
+
+        .phrase,
+        .filter {
+            margin: 12px;
+        }
+
+        #phrase {
+            margin-left: 50px;
+        }
+
+        #filter {
+            margin-left: 58px;
+        }
+
+        #go {
+            margin-left: 50px;
+        }
+
+        .word_odd,
+        .word_even {
+            border: 1px dotted #F43385;
+            display: inline-block;
+            margin: 5px;
+            padding: 3px;
+            font-size: 20px;
+            color: #F83C3C;
+            background-color: #FFDDDE;
+        }
+
+        #words,
+        #count {
+            margin: 12px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <script async="" charset="utf-8" defer="" src="Lab9_Ex3.js" type="text/javascript">
+    </script>
+    </meta>
+</head>
+
+<body>
+    <div class="form">
+        <h1>Sentence Reverser!</h1>
+        <div class="phrase"> Phrase: <input id="phrase" type="text" size="40" /> </div>
+        <div class="filter"> Filter: <input id="filter" type="text" size="10" readonly="true" /> </div>
+        <div> <button id="go" onclick="lab9_ex3a()">Go!</button> </div>
+        <div id="words"></div>
+        <div id="count"></div>
+    </div>
+
+</body>
+
+</html>
