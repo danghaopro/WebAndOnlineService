@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE Competition [
-<!ELEMENT Competition (Event)>
-<!ELEMENT Event (EventName, Participants, First, Second, Third)>
-<!ELEMENT EventName (#PCDATA)>
-<!ELEMENT Participants (ParticipantName, National, Position)>
-<!ELEMENT ParticipantName (#PCDATA)>
-<!ELEMENT National (#PCDATA)>
-<!ELEMENT Position (#PCDATA)>
-<!ELEMENT First (#PCDATA)>
-<!ELEMENT Second (#PCDATA)>
-<!ELEMENT Third (#PCDATA)>
+    <!ELEMENT Competition (Event)>
+        <!ELEMENT Event (EventName, Participants, First, Second, Third)>
+            <!ELEMENT EventName (#PCDATA)>
+            <!ELEMENT Participants (ParticipantName, National, Position)>
+                <!ELEMENT ParticipantName (#PCDATA)>
+                <!ELEMENT National (#PCDATA)>
+                <!ELEMENT Position (#PCDATA)>
+            <!ELEMENT First (#PCDATA)>
+            <!ELEMENT Second (#PCDATA)>
+            <!ELEMENT Third (#PCDATA)>
 ]>
